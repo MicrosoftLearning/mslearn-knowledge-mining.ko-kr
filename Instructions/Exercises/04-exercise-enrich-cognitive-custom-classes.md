@@ -222,13 +222,8 @@ Azure Cognitive Search 인덱스를 설정하고, Azure 함수를 만들고, 요
 
 이제 인식 검색 사용자 지정 기술 세트가 호출할 Python 함수 앱을 만듭니다. 함수 앱은 사용자 지정 텍스트 분류자 모델을 사용하여 검색 인덱스를 보강합니다.
 
-1. VScode를 열고 터미널에서 이 GitHub 리포지토리를 컴퓨터에 복제합니다.
-
-    ```bash
-    git clone https://github.com/MicrosoftLearning/mslearn-doc-intelligence movie-genre-function
-    ```
-
-1. Visual Studio Code에서 방금 복제한 **movie-genre-function** 폴더를 엽니다.
+1. [필수 파일을 다운로드](https://github.com/MicrosoftLearning/mslearn-knowledge-mining/raw/main/Labfiles/04-enrich-custom-classes/movie-genre-function.zip)하고 모든 파일이 포함된 폴더를 추출합니다.
+1. Visual Studio Code를 열고 방금 다운로드한 **movie-genre-function** 폴더를 엽니다.
 
     ![함수 앱 최적화 대화 상자를 보여 주는 Visual Studio Code 스크린샷](../media/04-media/optimize-visual-studio-code.png)
 1. 필요한 모든 확장을 설치한 경우 프로젝트를 최적화하라는 메시지가 표시됩니다. **예**를 선택합니다.
