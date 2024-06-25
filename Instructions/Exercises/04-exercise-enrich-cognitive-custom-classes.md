@@ -27,7 +27,7 @@ lab:
 
 ### 미리 빌드된 ARM 템플릿 배포
 
-1. [![Azure에 배포](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json). 시작 리소스를 만들려면 이 링크를 선택합니다. 검색 창에 [직접 링크](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json)를 복사하여 붙여넣어야 할 수도 있습니다.
+1. [![Azure에 배포](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json). 시작 리소스를 만들려면 이 링크를 선택합니다. 검색 창에 [직접 링크](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json)를 복사하여 붙여넣어야 할 수도 있습니다.
 
     ![Azure에 리소스를 배포할 때 표시되는 옵션의 스크린샷](../media/04-media/deploy-azure-resources.png)
 1. **리소스 그룹**에서 **새로 만들기**를 선택하고, 이름을 **cog-search-language-exe**로 지정합니다.
@@ -69,12 +69,9 @@ Azure Cognitive Search 인덱스를 설정하고, Azure 함수를 만들고, 요
 },
 ```
 
-1. GitHub에서 [샘플 데이터](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/language-service/Custom%20text%20classification/Custom%20multi%20classification%20-%20movies%20summary.zip)를 다운로드하여 머신에 로컬로 저장합니다.
+1. **Labfiles/04-enrich-custom-classes**로 이동하여 모든 파일이 포함된 **동영상 summary.zip** 폴더를 추출합니다.
 
-    ![샘플 zip 데이터를 다운로드할 위치를 보여 주는 스크린샷](../media/04-media/download-sample-data.png)
-1. **사용자 지정 다중 분류 - 영화 summary.zip** 파일을 열고 모든 파일이 포함된 폴더를 추출합니다.
-
-    > **참고** 이러한 파일을 사용하여 Language Studio에서 모델을 학습하고 Azure Cognitive Search의 모든 파일에 대한 인덱스도 생성합니다.
+    > **참고** 이러한 파일을 사용하여 Language Studio에서 모델을 학습하고 Azure AI Search의 모든 파일에 대한 인덱스도 생성합니다.
 
 1. [Azure Portal](https://portal.azure.com/)에서 **리소스 그룹**을 선택한 다음 리소스 그룹을 선택합니다.
 1. 만든 스토리지 계정(예: **acs18245str**)을 선택합니다.
@@ -89,7 +86,7 @@ Azure Cognitive Search 인덱스를 설정하고, Azure 함수를 만들고, 요
     ![컨테이너에 파일을 업로드하는 스크린샷](../media/04-media/upload-files.png)
 1. 창 위쪽에서 **업로드**를 선택합니다.
 1. **BLOB 업로드** 창에서 **파일 찾아보기**를 선택합니다.
-1. 샘플 파일을 다운로드한 위치로 이동하여 모든 텍스트(`.txt`) 및 json(`.json`) 파일을 선택합니다.
+1. 샘플 파일을 추출한 위치로 이동하여 모든 텍스트(`.txt`) 및 json(`.json`) 파일을 선택합니다.
 1. 창에서 **업로드**를 선택합니다.
 1. **Blob 업로드** 창이 닫힙니다.
 
@@ -99,11 +96,7 @@ Azure Cognitive Search 인덱스를 설정하고, Azure 함수를 만들고, 요
 1. **+ 리소스 만들기**를 선택하고 *언어 서비스*를 검색합니다.
 1. **언어 서비스**에서 **만들기**를 선택합니다.
 1. **사용자 지정 텍스트 분류 및 사용자 지정 명명된 엔터티 인식**이 포함된 옵션을 선택합니다.
-
-    ![사용자 지정 텍스트 분류 기능 추가를 보여 주는 스크린샷](../media/04-media/select-additional-features.png)
 1. **계속하여 리소스 만들기**를 선택합니다.
-
-    ![언어 서비스를 만드는 데 필요한 정보를 보여 주는 스크린샷](../media/04-media/enter-language-service-information.png)
 1. **리소스 그룹**에서 **cog-search-language-exe**를 선택합니다.
 1. **지역**에서 위에서 사용한 지역을 선택합니다.
 1. **이름**에 **learn-language-service-for-custom-text**를 입력합니다. 전역적으로 고유해야 하므로 끝에 임의의 숫자나 문자를 추가해야 할 수도 있습니다.

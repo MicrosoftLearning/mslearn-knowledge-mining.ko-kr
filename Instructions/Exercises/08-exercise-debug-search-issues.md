@@ -15,7 +15,7 @@ lab:
 
 디버그 세션 사용을 시작하기 전에 Azure Cognitive Search 서비스를 만들어야 합니다.
 
-1. [![Azure 리소스 배포 단추.](../media/08-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmaster%2Fazuredeploy.json) Azure Portal에 필요한 모든 리소스를 배포하려면 이 단추를 선택합니다.
+1. [Azure에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmain%2Fazuredeploy.json) - 이 링크를 선택하여 Azure Portal에 필요한 모든 리소스를 배포합니다.
 
     ![필드가 입력된 arm 배포 템플릿의 스크린샷.](../media/08-media/arm-template-deployment.png)
 
@@ -117,7 +117,7 @@ lab:
 1. 이제 기술 세트가 Azure AI 서비스 리소스에 연결되어 있어야 합니다. 그렇지 않으면 기본 견적에 도달하고 인덱서가 시간 초과됩니다. 이렇게 하려면 왼쪽 창에서 **기술 세트**를 선택한 다음 **hotels-sample-skillset**를 선택합니다.
 
     ![기술 세트 목록을 보여 주는 스크린샷.](../media/08-media/update-skillset.png)
-1. **AI 서비스** 탭을 선택한 다음 목록에서 AI 서비스 리소스를 선택합니다.
+1. **CONNECT AI 서비스**를 선택한 다음, 목록에서 AI 서비스 리소스를 선택합니다.
 
     ![기술 세트에 연결할 Azure AI 서비스 리소스를 보여 주는 스크린샷.](../media/08-media/skillset-attach-service.png)
 1. **저장**을 선택합니다.
