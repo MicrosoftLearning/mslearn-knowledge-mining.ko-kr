@@ -162,7 +162,7 @@ Azure Portal 상단에 있는 Cloud Shell 단추를 선택하여 Azure Cloud She
 
 ![100000개의 문서가 포함된 검색 인덱스를 보여 주는 스크린샷.](../media/07-media/check-search-service-index.png)
 
-### 연습 리소스 삭제
+### 정리
 
 연습을 완료했으므로 더 이상 필요하지 않은 모든 리소스를 삭제합니다. 머신에 복제된 코드로 시작합니다. 그런 다음, Azure 리소스를 삭제합니다.
 
