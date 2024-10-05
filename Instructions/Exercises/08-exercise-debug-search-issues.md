@@ -126,5 +126,6 @@ lab:
 
     ![해결된 모든 것을 보여 주는 스크린샷.](../media/08-media/warnings-fixed-indexer.png)
 
-> [!TIP]
-> 이제 연습을 완료했습니다. Azure AI 검색 서비스 탐색을 마쳤으면 연습 중에 만든 Azure 리소스를 삭제합니다. 가장 쉬운 방법은 **acs-cognitive-search-exercise** 리소스 그룹을 삭제하는 것입니다.
+### 정리
+
+ 이제 연습을 완료했습니다. Azure AI 검색 서비스 탐색을 마쳤으면 연습 중에 만든 Azure 리소스를 삭제합니다. 가장 쉬운 방법은 **acs-cognitive-search-exercise** 리소스 그룹을 삭제하는 것입니다.
