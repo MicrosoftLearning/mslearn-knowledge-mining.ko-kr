@@ -15,7 +15,7 @@ lab:
 
 디버그 세션 사용을 시작하기 전에 Azure Cognitive Search 서비스를 만들어야 합니다.
 
-1. [Azure에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmain%2Fazuredeploy.json) - 이 링크를 선택하여 Azure Portal에 필요한 모든 리소스를 배포합니다.
+1. [Azure에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - 이 링크를 선택하여 Azure Portal에 필요한 모든 리소스를 배포합니다.
 
     ![필드가 입력된 arm 배포 템플릿의 스크린샷.](../media/08-media/arm-template-deployment.png)
 
