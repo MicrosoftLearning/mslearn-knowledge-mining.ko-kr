@@ -13,26 +13,25 @@ lab:
 
 ## 검색 솔루션 만들기
 
-디버그 세션 사용을 시작하기 전에 Azure Cognitive Search 서비스를 만들어야 합니다.
+디버그 세션 사용을 시작하기 전에 Azure AI Search Service를 만들어야 합니다.
 
-1. [Azure에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - 이 링크를 선택하여 Azure Portal에 필요한 모든 리소스를 배포합니다.
+1. [Azure에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - 호스팅된 VM을 사용하는 경우, 이 링크를 복사하여 VM 브라우저에 붙여넣습니다. Azure Portal에 필요한 모든 리소스를 배포하려면 이 링크를 선택합니다.
 
     ![필드가 입력된 arm 배포 템플릿의 스크린샷.](../media/08-media/arm-template-deployment.png)
 
-1. **리소스 그룹**에서 **새로 만들기**를 선택합니다.
-1. **acs-cognitive-search-exercise**를 입력합니다.
-1. 가장 가까운 **지역**을 선택합니다.
-1. **리소스 접두사**의 경우 **acslearnex**를 입력하고 임의의 숫자 또는 문자 조합을 추가하여 스토리지 이름이 고유하도록 합니다.
+1. **리소스 그룹**에서 제공된 리소스 그룹을 선택하거나 **새로 만들기**를 선택한 후 **debug-search-exercise**를 입력합니다.
+1. 가장 가까운 **지역**을 선택하거나 기본값을 사용합니다.
+1. **리소스 접두사**의 경우 **debugsearch**를 입력하고 임의의 숫자 또는 문자 조합을 추가하여 스토리지 이름이 고유하도록 합니다.
 1. 위치의 경우 위에서 사용한 것과 동일한 지역을 선택합니다.
 1. 창 아래쪽에서 **검토 + 만들기**를 선택합니다.
 1. 리소스가 배포될 때까지 기다린 다음, **리소스 그룹으로 이동**을 선택합니다.
 
-## 샘플 데이터 가져오기
+## 샘플 데이터 가져오기 및 리소스 구성
 
 리소스를 만들면 이제 원본 데이터를 가져올 수 있습니다.
 
-1. 나열된 리소스에서 검색 서비스를 선택합니다.
-
+1. 나열된 리소스에서 스토리지 계정으로 이동합니다. 왼쪽 창에서 **구성**으로 이동하여 **BLOB 익명 액세스 허용**을 **사용**으로 설정한 다음 **저장**을 선택합니다.
+1. 리소스 그룹으로 다시 이동하여 Search Service를 선택합니다.
 1. **개요** 창에서 **데이터 가져오기**를 선택합니다.
 
       ![선택한 데이터 가져오기 메뉴를 보여 주는 스크린샷.](../media/08-media/import-data.png)
@@ -59,41 +58,30 @@ lab:
 ![인덱서에 대한 150개의 경고를 보여 주는 스크린샷.](../media/08-media/indexer-warnings.png)
 
 1. 왼쪽 창에서 **디버그 세션**을 선택합니다.
-
 1. **+ 디버그 세션 추가**를 선택합니다.
-
-1. 스토리지 연결 문자열에서 **기존 연결 선택**을 선택한 다음 스토리지 계정을 선택합니다.
-
-    ![연결을 선택하는 새 버그 해제 세션을 보여 주는 스크린샷.](../media/08-media/connect-storage.png)
-1. 새 컨테이너를 추가하려면 **+ 컨테이너**를 선택합니다. 이름을 **acs-debug-storage**로 지정합니다.
-
-    ![스토리지 컨테이너 만들기를 보여 주는 스크린샷.](../media/08-media/create-storage-container.png)
-
-1. **익명 액세스 수준**을 **컨테이너(컨테이너 및 Blob에 대한 익명 읽기 권한)** 로 설정합니다.
-
-    > **참고**: 이 옵션을 선택하려면 Blob 익명을 사용하도록 설정해야 할 수도 있습니다. 이렇게 하려면 스토리지 계정에서 **구성**으로 이동하여 **Blob 익명 액세스 허용**을 **사용**으로 설정한 다음 **저장**을 선택합니다.
-
-1. **만들기**를 실행합니다.
-1. 목록에서 새 컨테이너를 선택한 다음 **선택**을 선택합니다.
-1. **인덱서 템플릿**으로 **hotel-sample-indexer**를 선택합니다.
-1. **세션 저장**을 선택합니다.
+1. 세션의 이름을 입력하고 **인덱서 템플릿**에서 **hotel-sample-indexer**를 선택합니다.
+1. **스토리지 계정** 필드에서 스토리지 계정을 선택합니다. 그러면 디버그 데이터를 저장할 스토리지 컨테이너가 자동으로 만들어집니다.
+1. 관리 ID를 사용하여 인증 확인란을 선택하지 않은 상태로 둡니다.
+1. **저장**을 선택합니다.
+1. 디버그 세션이 만들어지면 Search Service의 데이터에서 자동으로 실행됩니다. 오류/경고로 완료해야 합니다.
 
     종속성 그래프는 각 문서에 대해 세 가지 기술에 오류가 있음을 보여 줍니다.
-    ![보완된 문서의 세 가지 오류를 보여 주는 스크린샷.](../media/08-media/warning-skill-selection.png)
+    ![보완된 문서의 세 가지 오류를 보여 주는 스크린샷.](../media/08-media/debug-session-errors.png)
 
-1. **V3**를 선택합니다.
+    > **참고**: 스토리지 계정에 연결하고 관리 ID를 구성하는 동안 오류가 표시 될 수 있습니다. 이는 익명 BLOB 액세스를 사용하도록 설정한 직후 디버그를 시도하려 할 때 발생하며, 디버그 세션은 여전히 정상적으로 실행될 것입니다. 몇 분 후에 브라우저 창을 새로 고침하면 경고가 제거됩니다.
+
+1. 종속성 그래프에서 오류가 있는 기술 노드 중 하나를 선택합니다.
 1. 기술 세부 정보 창에서 **오류/경고(1)** 를 선택합니다.
-1. 세부 정보를 볼 수 있도록 **메시지** 열을 확장합니다.
 
     세부 정보는 다음과 같습니다.
 
-    *잘못된 언어 코드 '(알 수 없음)'. 지원되는 언어: ar,cs,da,de,en,es,fi,fr,hu,it,ja,ko,nl,no,pl,pt-BR,pt-PT,ru,sv,tr,zh-Hans. 자세한 내용은 https://aka.ms/language-service/language-support를 참조하세요.*
+    *잘못된 언어 코드 '(알 수 없음)'. 지원되는 언어: af,am,ar,as,az,bg,bn,bs,ca,cs,cy,da,de,el,en,es,et,eu,fa,fi,fr,ga,gl,gu,he,hi,hr,hu,hy,id,it,ja,ka,kk,km,kn,ko,ku,ky,lo,lt,lv,mg,mk,ml,mn,mr,ms,my,ne,nl,no,or,pa,pl,ps,pt-BR,pt-PT,ro,ru,sk,sl,so,sq,sr,ss,sv,sw,ta,te,th,tr,ug,uk,ur,uz,vi,zh-Hans,zh-Hant. 자세한 내용은 https://aka.ms/language-service/language-support을(를) 참조하세요.*
 
-    종속성 그래프를 다시 살펴보면 언어 감지 기술에 경고가 포함된 세 가지 기술에 대한 출력이 있습니다. 또한 오류를 일으키는 기술 입력은 `languageCode`입니다.
+    종속성 그래프를 다시 살펴보면 언어 감지 기술에 오류가 포함된 세 가지 기술에 대한 출력이 있습니다. 오류가 있는 기술 설정을 보면 오류가 발생하는 기술 입력은 `languageCode`입니다.
 
 1. 종속성 그래프에서 **언어 감지**를 선택합니다.
 
-    ![언어 감지 기술에 대한 기술 설정을 보여 주는 스크린샷.](../media/08-media/language-detection-error.png)
+    ![언어 감지 기술에 대한 기술 설정을 보여 주는 스크린샷.](../media/08-media/language-detection-skill-settings.png)
     기술 설정 JSON을 살펴보면 언어를 추론하는 데 사용되는 필드는 `HotelId`입니다.
 
     이 필드는 기술에서 ID에 따라 언어를 계산할 수 없으면 오류가 발생합니다.
@@ -101,20 +89,17 @@ lab:
 ## 인덱서에 대한 경고 해결
 
 1. 입력 아래에서 **원본**를 선택하고 필드를 `/document/Description`으로 변경합니다.
-    ![고정 기술을 보여 주는 언어 검색 기술 화면의 스크린샷.](../media/08-media/language-detection-fix.png)
 1. **저장**을 선택합니다.
-1. **실행**을 선택합니다.
+1. **실행**을 선택합니다. 인덱서에는 더 이상 오류나 경고가 없어야 합니다. 이제 기술 세트를 업데이트할 수 있습니다.
 
-    ![기술을 업데이트한 후 실행해야 하는 필요성을 보여 주는 스크린샷.](../media/08-media/rerun-debug-session.png)
+    ![오류 없이 전체 실행을 보여 주는 스크린샷.](../media/08-media/debug-session-complete.png)
+   
+1. **변경 사항 커밋**을 선택하여 이 세션에서 변경한 내용을 인덱서에 푸시합니다.
+1. **확인**을 선택합니다. 이제 세션을 삭제할 수 있습니다.
 
-    인덱서에는 더 이상 오류나 경고가 없어야 합니다. 이제 기술 세트를 업데이트할 수 있습니다.
+이제 기술 세트가 Azure AI 서비스 리소스에 연결되어 있어야 합니다. 그렇지 않으면 기본 할당량에 도달하고 인덱서가 시간 초과됩니다. 
 
-1. **변경 내용 커밋...** 을 선택합니다.
-
-    ![해결된 문제를 보여 주는 스크린샷.](../media/08-media/error-fixed.png)
-1. **확인**을 선택합니다.
-
-1. 이제 기술 세트가 Azure AI 서비스 리소스에 연결되어 있어야 합니다. 그렇지 않으면 기본 견적에 도달하고 인덱서가 시간 초과됩니다. 이렇게 하려면 왼쪽 창에서 **기술 세트**를 선택한 다음 **hotels-sample-skillset**를 선택합니다.
+1. 이렇게 하려면 왼쪽 창에서 **기술 세트**를 선택한 다음 **hotels-sample-skillset**를 선택합니다.
 
     ![기술 세트 목록을 보여 주는 스크린샷.](../media/08-media/update-skillset.png)
 1. **CONNECT AI 서비스**를 선택한 다음, 목록에서 AI 서비스 리소스를 선택합니다.
@@ -126,6 +111,6 @@ lab:
 
     ![해결된 모든 것을 보여 주는 스크린샷.](../media/08-media/warnings-fixed-indexer.png)
 
-### 정리
+## 정리
 
- 이제 연습을 완료했습니다. Azure AI 검색 서비스 탐색을 마쳤으면 연습 중에 만든 Azure 리소스를 삭제합니다. 가장 쉬운 방법은 **acs-cognitive-search-exercise** 리소스 그룹을 삭제하는 것입니다.
+ 이제 연습을 완료했습니다. Azure AI 검색 서비스 탐색을 마쳤으면 연습 중에 만든 Azure 리소스를 삭제합니다. 가장 쉬운 방법은 **debug-search-exercise** 리소스 그룹을 삭제하는 것입니다.
