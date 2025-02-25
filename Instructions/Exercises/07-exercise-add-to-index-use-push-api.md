@@ -27,7 +27,7 @@ Azure AI 검색 인덱스를 만들고 C# 코드를 사용하여 해당 인덱�
 
     ![배포된 모든 Azure 리소스를 보여 주는 스크린샷.](../media/07-media/azure-resources-created.png)
 
-### Azure AI 검색 서비스 REST API 정보 복사
+## Azure AI 검색 서비스 REST API 정보 복사
 
 1. 리소스 목록에서 만든 검색 서비스를 선택합니다. 위의 예에서는 **acs118245-search-service**입니다.
 1. 검색 서비스 이름을 텍스트 파일에 복사합니다.
@@ -35,33 +35,18 @@ Azure AI 검색 인덱스를 만들고 C# 코드를 사용하여 해당 인덱�
     ![검색 서비스의 키 섹션 스크린샷.](../media/07-media/search-api-keys-exercise-version.png)
 1. 왼쪽에서 **키**를 선택한 다음, **기본 관리자 키**를 동일한 텍스트 파일에 복사합니다.
 
-### 예제 코드 다운로드
+## Visual Studio Code에서 사용할 예제 코드 다운로드
 
-Azure Portal 상단에 있는 Cloud Shell 단추를 선택하여 Azure Cloud Shell을 엽니다.
-> **참고** Azure Storage 계정을 만들라는 메시지가 표시되면 **스토리지 만들기**을 선택합니다.
+Visual Studio Code를 사용하여 Azure 샘플 코드를 실행합니다. 코드 파일은 GitHub 리포지토리에 제공되었습니다.
 
-1. 시작이 완료되면 Cloud Shell에서 다음을 실행하여 다음 코드 예 리포지토리를 복제합니다.
+1. Visual Studio Code 시작
+1. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
+1. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
-    ```powershell
-    git clone https://github.com/Azure-Samples/azure-search-dotnet-scale.git samples
-    ```
+    > **참고**: 빌드 및 디버깅에 필요한 자산을 추가하라는 메시지가 표시되면 **나중에**를 선택합니다.
 
-1. 다음을 실행하여 새로 만들어진 디렉터리로 변경합니다.
-
-    ```powershell
-    cd samples
-    ```
-
-1. 다음을 실행합니다.
-
-    ```powershell
-    code ./optimize-data-indexing/v11
-    ```
-
-1. 그러면 `/optimize-data-indexing/v11` 폴더에 있는 Cloud Shell 내의 코드 편집기가 열립니다.
-
-    ![설치 알림을 보여 주는 VS Code의 스크린샷.](../media/07-media/setup-visual-studio-code-solution.png)
-1. 왼쪽 탐색 영역에서 **OptimizeDataIndexing** 폴더를 확장한 다음, **appsettings.json** 파일을 선택합니다.
+1. 왼쪽 탐색에서 **optimize-data-indexing/v11/OptimizeDataIndexing** 폴더를 확장한 다음 **appsettings.json** 파일을 선택합니다.
 
     ![appsettings.json 파일의 내용을 보여 주는 스크린샷.](../media/07-media/update-app-settings.png)
 1. 검색 서비스 이름 및 기본 관리 키를 붙여넣습니다.
@@ -76,36 +61,29 @@ Azure Portal 상단에 있는 Cloud Shell 단추를 선택하여 Azure Cloud She
 
     설정 파일은 위와 유사해야 합니다.
 1. **CTRL + S**를 눌러 변경 내용을 저장합니다.
-1. **OptimizeDataIndexing.csproj** 파일을 선택합니다. <!-- Added this and the next two steps in case we can't update the file in the repo that holds these (seems to be separate from the other labs)-->
-1. 다섯 번째 줄에서 `<TargetFramework>netcoreapp3.1</TargetFramework>`를 `<TargetFramework>net7.0</TargetFramework>`로 변경합니다. <!--- can be removed if no longer needed based on the above-->
-1. **CTRL + S**를 눌러 변경 내용을 저장합니다.<!--- can be removed if no longer needed based on the above-->
-1. 터미널에 `cd ./optimize-data-indexing/v11/OptimizeDataIndexing`을 입력한 다음 **Enter** 키를 눌러 올바른 디렉터리로 변경합니다.
-1. **Program.cs** 파일을 선택합니다. 그런 다음 터미널에 `dotnet run`을 입력하고 **Enter** 키를 누릅니다.
+1. **OptimizeDataIndexing** 폴더를 마우스 오른쪽 단추로 클릭하고 **통합 터미널에서 열기**를 선택합니다.
+1. 터미널에서 `dotnet run`을(를) 입력하고 **Enter** 키를 누릅니다.
 
     ![예외가 있는 VS Code에서 실행되는 앱을 보여 주는 스크린샷.](../media/07-media/debug-application.png)
-출력에 따르면 이 경우 가장 성능이 좋은 일괄 처리 크기는 900개 문서입니다. 초당 3.688MB에 도달합니다.
+출력에 따르면 이 경우 가장 성능이 좋은 일괄 처리 크기는 900개 문서입니다. 초당 6.071MB에 도달합니다.
 
-### 코드를 편집하여 스레딩, 백오프, 재시도 전략 구현
+## 코드를 편집하여 스레딩, 백오프, 재시도 전략 구현
 
 스레드를 사용하여 문서를 검색 인덱스에 업로드하도록 앱을 변경할 준비가 된 주석 처리된 코드가 있습니다.
 
 1. **Program.cs**를 선택했는지 확인합니다.
 
     ![Program.cs 파일을 보여 주는 VS Code의 스크린샷.](../media/07-media/edit-program-code.png)
-1. 38행과 39행을 다음과 같이 주석으로 처리합니다.
+1. 37행과 38행을 다음과 같이 주석으로 처리합니다.
 
     ```csharp
     //Console.WriteLine("{0}", "Finding optimal batch size...\n");
     //await TestBatchSizesAsync(searchClient, numTries: 3);
     ```
 
-1. 41~49줄의 주석 처리를 제거합니다.
+1. 44~48줄의 주석 처리를 제거합니다.
 
     ```csharp
-    long numDocuments = 100000;
-    DataGenerator dg = new DataGenerator();
-    List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
-
     Console.WriteLine("{0}", "Uploading using exponential backoff...\n");
     await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8);
 
@@ -122,7 +100,6 @@ Azure Portal 상단에 있는 Cloud Shell 단추를 선택하여 Azure Cloud She
 1. 터미널을 선택한 다음, 아직 종료하지 않았다면 아무 키나 눌러 실행 중인 프로세스를 종료합니다.
 1. 터미널에서 `dotnet run`을 실행합니다.
 
-    ![콘솔에서 완료된 메시지를 보여 주는 스크린샷.](../media/07-media/upload-hundred-thousand-documents.png)
     앱은 8개의 스레드를 시작한 다음, 각 스레드가 콘솔에 새 메시지 쓰기를 마치면 다음을 수행합니다.
 
     ```powershell
@@ -162,7 +139,7 @@ Azure Portal 상단에 있는 Cloud Shell 단추를 선택하여 Azure Cloud She
 
 ![100000개의 문서가 포함된 검색 인덱스를 보여 주는 스크린샷.](../media/07-media/check-search-service-index.png)
 
-### 정리
+## 정리
 
 연습을 완료했으므로 더 이상 필요하지 않은 모든 리소스를 삭제합니다. 머신에 복제된 코드로 시작합니다. 그런 다음, Azure 리소스를 삭제합니다.
 
