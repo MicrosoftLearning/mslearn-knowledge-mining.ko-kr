@@ -83,29 +83,29 @@ Azure Portal은 문서의 첫 번째 필드를 번역해야 한다고 가정합�
 
 1. 페이지 위에서 검색 서비스인 **advanced-search-service-12345 |Indexes** 링크를 선택합니다.
 1. 왼쪽 창의 검색 관리에서 **기술 세트**를 선택한 다음, **hotels-sample-skillset**를 선택합니다.
-1. JSON 문서를 편집하고 줄 11을 다음으로 변경합니다.
+1. JSON 문서를 편집하고 9번째 줄을 다음으로 변경합니다.
 
     ```json
     "context": "/document/Description",
     ```
 
-1. 12줄에서 기본값을 언어에서 영어로 변경합니다.
+1. 11번 줄의 기본값을 언어에서 영어로 변경합니다.
 
     ```json
     "defaultFromLanguageCode": "en",
     ```
 
-1. 줄 18의 원본 필드를 다음으로 변경합니다.
+1. 15번째 줄의 원본 필드를 다음과 같이 변경합니다.
 
     ```json
-    "source": "/document/Description"
+    "source": "/document/Description",
     ```
 
 1. **저장**을 선택합니다.
 1. 페이지 위에서 검색 서비스인 **advanced-search-service-12345 | Skillsets** 링크를 선택합니다.
 1. **개요** 창에서 **인덱서**를 선택한 다음 **hotels-sample-indexer**를 선택합니다.
-1. **인덱서 정의(JSON)** 를 선택합니다.
-1. 줄 21의 원본 필드 이름을 다음으로 변경합니다.
+1. **JSON 편집**을 선택합니다.
+1. 20번째 줄의 원본 필드 이름을 다음과 같이 변경합니다.
 
     ```json
     "sourceFieldName": "/document/Description/Description_pt",
