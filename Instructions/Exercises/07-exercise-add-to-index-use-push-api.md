@@ -15,7 +15,7 @@ Azure AI 검색 인덱스를 만들고 C# 코드를 사용하여 해당 인덱�
 
 시간을 절약하려면 이 Azure Resource Manager 템플릿을 선택하여 나중에 연습에서 필요한 리소스를 만듭니다.
 
-1. [Azure 에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F07-exercise-add-to-index-use-push-api%20lab-files%2Fazuredeploy.json) - 이 링크를 선택하여 Azure AI 리소스를 만듭니다.
+1. [Azure 에 리소스 배포](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F07-exercise-add-to-index-use-push-api%2Fazuredeploy.json) - 이 링크를 선택하여 Azure AI 리소스를 만듭니다.
     ![Azure에 리소스를 배포할 때 표시되는 옵션의 스크린샷](../media/07-media/deploy-azure-resources.png)
 1. **리소스 그룹**에서 **새로 만들기**를 선택하고, 이름을 **cog-search-language-exe**로 지정합니다.
 1. **지역**에서 가까운 [지원되는 지역](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability)을 선택합니다.
